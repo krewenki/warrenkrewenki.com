@@ -3,4 +3,7 @@ module "github-oidc" {
   version = "0.0.1"
 
   role_name = "github-oidc"
+  subjects = [
+    "repo:krewenki/warrenkrewenki.com.git:*"
+  ]
 }
