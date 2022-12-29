@@ -61,7 +61,6 @@ jobs:
       - name: Checkout PR branch
         uses: actions/checkout@v2
         with:
-          ref: "${{ github.event.pull_request.base.ref }}"
           submodules: true
 
       # Generate an Infracost diff and save it to a JSON file.
