@@ -18,3 +18,25 @@ resource "aws_route53_record" "cert_validation" {
   type            = each.value.type
   zone_id         = aws_route53_zone.domain.zone_id
 }
+
+resource "aws_route53_record" "root" {
+  name = local.domain_name
+  #records = [module.cloudfront.cloudfront_distribution_domain_name]
+  type    = "A"
+  zone_id = aws_route53_zone.domain.zone_id
+  alias {
+    name                   = module.cloudfront.cloudfront_distribution_domain_name
+    zone_id                = module.cloudfront.cloudfront_distribution_hosted_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "www" {
+  name    = "www"
+  records = [module.cloudfront.cloudfront_distribution_domain_name]
+  ttl     = 60
+  type    = "CNAME"
+  zone_id = aws_route53_zone.domain.zone_id
+}
+
+
