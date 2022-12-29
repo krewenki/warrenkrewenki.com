@@ -48,6 +48,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: "${{ github.event.pull_request.base.ref }}"
+          submodules: true
 
       # Generate Infracost JSON file as the baseline.
       - name: Generate Infracost cost estimate baseline
@@ -61,6 +62,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: "${{ github.event.pull_request.base.ref }}"
+          submodules: true
 
       # Generate an Infracost diff and save it to a JSON file.
       - name: Generate Infracost diff
