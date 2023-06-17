@@ -1,6 +1,5 @@
 locals {
   domain_name = "warrenkrewenki.com"
-  bucket_name = format("www.%s", local.domain_name)
 }
 
 data "aws_caller_identity" "current" {}
